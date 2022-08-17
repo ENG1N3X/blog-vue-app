@@ -11,6 +11,7 @@ export const useUsersStore = defineStore("usersStore", {
 	actions: {
 		loadUserList() {
 			this.isLoading = true
+			this.isError = false
 			axios({
 				method: "get",
 				url: "https://jsonplaceholder.typicode.com/users?_limit=20",
