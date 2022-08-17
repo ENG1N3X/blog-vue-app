@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<p v-if="postListStore.isError" class="text-center">Something went wrong!</p>
-		<div v-else-if="postListStore.isLoading">
+		<p v-if="postsStore.isError" class="text-center">Something went wrong!</p>
+		<div v-else-if="postsStore.isLoading">
       <div class="animate-spin h-5 w-5 mx-auto border border-black rounded-full border-r-0"></div>
     </div>
 		<div v-else>
@@ -15,7 +15,7 @@
 
 <script>
 import PostItem from "./PostItem.vue"
-import { usePostListStore } from '../stores/postListStore'
+import { usePostsStore } from '../stores/postsStore'
 
 export default {
 	name: "PostList",
@@ -23,17 +23,17 @@ export default {
     PostItem
   },
   setup() {
-    const postListStore = usePostListStore()
-    return { postListStore }
+    const postsStore = usePostsStore()
+    return { postsStore }
   },
   computed: {
     postList: function() {
-      return this.postListStore.getPostList
+      return this.postsStore.getPostList
     }
   },
 	methods: {},
 	created() {
-		this.postListStore.loadPostList()
+		this.postsStore.loadPostList()
 	},
 }
 </script>

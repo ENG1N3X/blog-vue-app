@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<p v-if="userListStore.isError" class="text-center">Something went wrong!</p>
-		<div v-else-if="userListStore.isLoading">
+		<p v-if="usersStore.isError" class="text-center">Something went wrong!</p>
+		<div v-else-if="usersStore.isLoading">
 			<div class="animate-spin h-5 w-5 mx-auto border border-red-600 rounded-full border-r-0"></div>
 		</div>
 		<div v-else>
@@ -14,33 +14,33 @@
 </template>
 
 <script>
-import { useUserListStore } from "../stores/userListStore"
-import { usePostListStore } from "../stores/postListStore"
+import { useUsersStore } from "../stores/usersStore"
+import { usePostsStore } from "../stores/postsStore"
 
 export default {
 	name: "UserList",
 	setup() {
-		const userListStore = useUserListStore()
-		const postListStore = usePostListStore()
-		return { userListStore, postListStore }
+		const usersStore = useUsersStore()
+		const postsStore = usePostsStore()
+		return { usersStore, postsStore }
 	},
 	computed: {
 		userList: function () {
-			return this.userListStore.getUserList
+			return this.usersStore.getUserList
 		},
 	},
 	methods: {
 		onChange(e) {
 			const value = e.target.value
 			if (value == "all") {
-				this.postListStore.loadPostList()
+				this.postsStore.loadPostList()
 				return
 			}
 			console.log(e.target.value)
 		},
 	},
 	created() {
-		this.userListStore.loadUserList()
+		this.usersStore.loadUserList()
 	},
 }
 </script>

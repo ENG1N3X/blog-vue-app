@@ -1,24 +1,24 @@
 import { defineStore } from "pinia"
 import axios from "axios"
 
-export const usePostListStore = defineStore("postListStore", {
-	state: () => ({ postList: [], isLoading: true, isError: false }),
+export const useUsersStore = defineStore("usersStore", {
+	state: () => ({ userList: [], isLoading: true, isError: false }),
 	getters: {
-		getPostList(state) {
-			return state.postList
+		getUserList(state) {
+			return state.userList
 		},
 	},
 	actions: {
-		loadPostList() {
+		loadUserList() {
 			this.isLoading = true
 			axios({
 				method: "get",
-				url: "https://jsonplaceholder.typicode.com/posts?_limit=20",
+				url: "https://jsonplaceholder.typicode.com/users?_limit=20",
 				responseType: "json",
 			})
 				.then((response) => {
-					console.log("[POSTS] response", response)
-					this.postList = response.data
+					console.log("[USERS] response", response)
+					this.userList = response.data
 					this.isLoading = false
 				})
 				.catch((error) => {
