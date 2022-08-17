@@ -1,0 +1,21 @@
+<template>
+	<div class="w-full md:w-1/2 lg:w-1/3 p-4">
+		<div class="p-4 rounded-sm shadow-md h-full">
+			<h3>{{ post.title }}</h3>
+			<p>{{ post.body }}</p>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	props: {
+		post: {
+			type: Object,
+			required: true,
+		},
+	},
+}
+</script>
+
+<style></style>
