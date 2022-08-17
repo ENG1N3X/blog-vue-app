@@ -1,11 +1,19 @@
-module.exports.getUserPosts = (req, res) => {
-  console.log(req.params.id);
+const axios = require("axios")
 
-  res.send("Hello World!")
-  // try {
-  //   const product = await Product.findById(req.params.id)
-  //   res.status(200).json(product)
-  // } catch (error) {
-  //   res.status(500).json({ message: 'Не удалось полуичть элемент!', error })
-  // }
+module.exports.getUserPosts = (req, res) => {
+	axios({
+		method: "get",
+		url: `https://jsonplaceholder.typicode.com/posts?userId=${req.params.id}&_limit=20`,
+		responseType: "json",
+	})
+		.then((response) => {
+			if (!response.data.length) {
+				throw new Error("Empty data response")
+				return
+			}
+			res.status(200).json(response.data)
+		})
+		.catch((error) => {
+			res.status(500).json({ message: "Server fetching error", error })
+		})
 }

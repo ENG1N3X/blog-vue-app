@@ -37,11 +37,11 @@ export default {
 	methods: {
 		onChange(e) {
 			const value = e.target.value
-			if (value == "all") {
+			if (value.toLowerCase() == "all") {
 				this.postsStore.loadPostList()
 				return
 			}
-			console.log(e.target.value)
+			this.postsStore.loadUserPostList(e.target.value)
 		},
 	},
 	created() {

@@ -64,5 +64,25 @@ export const usePostsStore = defineStore("postsStore", {
 					this.isError = true
 				})
 		},
+		loadUserPostList(userId) {
+			this.isLoading = true
+			this.isError = false
+
+			axios({
+				method: "get",
+				url: `http://localhost:3000/api/posts/getUserPosts/${userId}`,
+				responseType: "json",
+			})
+				.then((response) => {
+					console.log("[USER POSTS] response", response)
+					this.postList = response.data
+					this.isLoading = false
+				})
+				.catch((error) => {
+					console.log("Fetching error", error)
+					this.isLoading = false
+					this.isError = true
+				})
+		},
 	},
 })
