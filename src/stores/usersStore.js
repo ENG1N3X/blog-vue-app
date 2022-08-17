@@ -14,7 +14,7 @@ export const useUsersStore = defineStore("usersStore", {
 			this.isError = false
 			axios({
 				method: "get",
-				url: "https://jsonplaceholder.typicode.com/users?_limit=20",
+				url: "https://jsonplaceholder.typicode.com/users",
 				responseType: "json",
 			})
 				.then((response) => {

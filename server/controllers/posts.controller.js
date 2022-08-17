@@ -3,13 +3,12 @@ const axios = require("axios")
 module.exports.getUserPosts = (req, res) => {
 	axios({
 		method: "get",
-		url: `https://jsonplaceholder.typicode.com/posts?userId=${req.params.id}&_limit=20`,
+		url: `https://jsonplaceholder.typicode.com/posts?userId=${req.params.id}&_limit=30`,
 		responseType: "json",
 	})
 		.then((response) => {
 			if (!response.data.length) {
 				throw new Error("Empty data response")
-				return
 			}
 			res.status(200).json(response.data)
 		})

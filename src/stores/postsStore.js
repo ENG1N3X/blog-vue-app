@@ -17,7 +17,7 @@ export const usePostsStore = defineStore("postsStore", {
 			this.isError = false
 			axios({
 				method: "get",
-				url: "https://jsonplaceholder.typicode.com/posts?_limit=20",
+				url: "https://jsonplaceholder.typicode.com/posts",
 				responseType: "json",
 			})
 				.then((response) => {

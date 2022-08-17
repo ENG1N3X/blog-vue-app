@@ -1,9 +1,9 @@
 <template>
 	<div class="flex flex-wrap">
-		<div class="w-1/4 px-2">
+		<div class="w-1/5 px-2">
 			<UserList />
 		</div>
-		<div class="w-3/4 px-2">
+		<div class="w-4/5 px-2">
 			<PostList />
 		</div>
 	</div>

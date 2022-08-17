@@ -5,7 +5,7 @@
 			<AjaxLoader />
 		</div>
 		<div v-else>
-			<select class="border border-black p-2" @change="onChange">
+			<select class="w-full border border-black p-2" @change="onChange">
 				<option value="all" :selected="postsStore.currentUserPosts.id == 0">All</option>
 				<option v-for="user in userList" :key="user.id" :value="user.id" :data-name="user.name" :selected="postsStore.currentUserPosts.id == user.id">{{ user.name }}</option>
 			</select>

@@ -3,7 +3,7 @@ const cors = require("cors")
 const postRoutes = require("./routes/posts.router.js")
 
 const app = express()
-const HOST = process.env.PORT ?? "localhost"
+const HOST = process.env.HOST ?? "localhost"
 const PORT = process.env.PORT ?? 3000
 
 app.use(express.json())
