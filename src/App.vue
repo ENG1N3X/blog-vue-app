@@ -1,25 +1,18 @@
 <template>
-	<div id="app" class="max-w-screen-xl w-full mx-auto px-4 py-8">
-		<div class="flex flex-wrap">
-			<div class="w-1/4 px-2">
-				<UserList />
-			</div>
-			<div class="w-3/4 px-2">
-				<PostList />
-			</div>
+	<div id="app">
+		<div id="nav" class="text-center p-7">
+			<router-link to="/" class="font-bold">Home</router-link>
 		</div>
+		<router-view />
 	</div>
 </template>
 
-<script>
-import PostList from "./components/PostList.vue"
-import UserList from "./components/UserList.vue"
-
-export default {
-	name: "App",
-	components: {
-		PostList,
-		UserList,
-	},
+<style lang="scss">
+#nav {
+	a {
+		&.router-link-exact-active {
+			color: #42b983;
+		}
+	}
 }
-</script>
+</style>
