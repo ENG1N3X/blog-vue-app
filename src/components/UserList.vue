@@ -2,7 +2,7 @@
 	<div>
 		<p v-if="usersStore.isError" class="text-center">Something went wrong!</p>
 		<div v-else-if="usersStore.isLoading">
-			<div class="animate-spin h-5 w-5 mx-auto border border-red-600 rounded-full border-r-0"></div>
+			<AjaxLoader/>
 		</div>
 		<div v-else>
 			<select class="border border-black p-2" @change="onChange">
@@ -17,8 +17,13 @@
 import { useUsersStore } from "../stores/usersStore"
 import { usePostsStore } from "../stores/postsStore"
 
+import AjaxLoader from "./AjaxLoader.vue"
+
 export default {
 	name: "UserList",
+	components: {
+		AjaxLoader
+	},
 	setup() {
 		const usersStore = useUsersStore()
 		const postsStore = usePostsStore()

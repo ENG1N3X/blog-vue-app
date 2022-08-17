@@ -2,7 +2,7 @@
 	<div class="max-w-screen-md mx-auto">
 		<p v-if="postsStore.isError" class="text-center">Something went wrong!</p>
 		<div v-else-if="postsStore.isLoading">
-			<div class="animate-spin h-5 w-5 mx-auto border border-black rounded-full border-r-0"></div>
+			<AjaxLoader/>
 		</div>
 		<div v-else>
 			<h1 class="mb-4">{{ postData.post.title }}</h1>
@@ -35,8 +35,13 @@
 <script>
 import { usePostsStore } from "../stores/postsStore"
 
+import AjaxLoader from "../components/AjaxLoader"
+
 export default {
 	name: "PostPage",
+	components: {
+		AjaxLoader
+	},
 	setup() {
 		const postsStore = usePostsStore()
 		return { postsStore }

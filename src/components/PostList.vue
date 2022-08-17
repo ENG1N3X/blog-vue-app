@@ -2,7 +2,7 @@
 	<div>
 		<p v-if="postsStore.isError" class="text-center">Something went wrong!</p>
 		<div v-else-if="postsStore.isLoading">
-      <div class="animate-spin h-5 w-5 mx-auto border border-black rounded-full border-r-0"></div>
+      <AjaxLoader/>
     </div>
 		<div v-else>
       <div class="flex flex-wrap">
@@ -14,13 +14,16 @@
 </template>
 
 <script>
-import PostItem from "./PostItem.vue"
 import { usePostsStore } from '../stores/postsStore'
+
+import PostItem from "./PostItem.vue"
+import AjaxLoader from "./AjaxLoader.vue"
 
 export default {
 	name: "PostList",
   components: {
-    PostItem
+    PostItem,
+    AjaxLoader
   },
   setup() {
     const postsStore = usePostsStore()
