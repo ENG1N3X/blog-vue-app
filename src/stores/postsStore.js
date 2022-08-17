@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 import axios from "axios"
 
 export const usePostsStore = defineStore("postsStore", {
-	state: () => ({ postList: [], postData: null, isLoading: true, isError: false }),
+	state: () => ({ postList: [], postData: null, currentUserPosts: { id: 0, name: "all" }, isLoading: true, isError: false }),
 	getters: {
 		getPostList(state) {
 			return state.postList

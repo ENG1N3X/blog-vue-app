@@ -6,7 +6,7 @@
     </div>
 		<div v-else>
       <div class="flex flex-wrap">
-        <h1 class="w-full text-center">All Posts</h1>
+        <h1 class="w-full text-center">{{ postsStore.currentUserPosts.name }} Posts</h1>
         <PostItem v-for="post in postList" :key="post.id" :post="post" />
       </div>
     </div>

@@ -2,12 +2,12 @@
 	<div>
 		<p v-if="usersStore.isError" class="text-center">Something went wrong!</p>
 		<div v-else-if="usersStore.isLoading">
-			<AjaxLoader/>
+			<AjaxLoader />
 		</div>
 		<div v-else>
 			<select class="border border-black p-2" @change="onChange">
-				<option value="all" selected>All</option>
-				<option v-for="user in userList" :key="user.id" :value="user.id">{{ user.name }}</option>
+				<option value="all" :selected="postsStore.currentUserPosts.id == 0">All</option>
+				<option v-for="user in userList" :key="user.id" :value="user.id" :data-name="user.name" :selected="postsStore.currentUserPosts.id == user.id">{{ user.name }}</option>
 			</select>
 		</div>
 	</div>
@@ -22,7 +22,7 @@ import AjaxLoader from "./AjaxLoader.vue"
 export default {
 	name: "UserList",
 	components: {
-		AjaxLoader
+		AjaxLoader,
 	},
 	setup() {
 		const usersStore = useUsersStore()
@@ -39,9 +39,13 @@ export default {
 			const value = e.target.value
 			if (value.toLowerCase() == "all") {
 				this.postsStore.loadPostList()
+
+				this.postsStore.$patch({ currentUserPosts: { id: 0, name: value } })
 				return
 			}
-			this.postsStore.loadUserPostList(e.target.value)
+
+			this.postsStore.loadUserPostList(value)
+			this.postsStore.$patch({ currentUserPosts: { id: value, name: e.target.querySelector(":checked").getAttribute("data-name") } })
 		},
 	},
 	created() {
