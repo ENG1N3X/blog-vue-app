@@ -10,6 +10,11 @@ yarn install
 yarn serve
 ```
 
+### Run Express server
+```
+yarn server
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
