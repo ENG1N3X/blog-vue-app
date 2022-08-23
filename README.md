@@ -1,4 +1,4 @@
-# okenit-vue-app
+# blog-vue-app
 
 ## Project setup
 ```
